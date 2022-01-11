@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <link th:href="@{/css/bootstrap.min.css}"
+            href="../css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<head th:replace="/basic/navVar.html :: nav"></head>
+<div class="container" style="max-width: 600px">
+    <div class="py-5 text-center">
+        <h2>국민 청원</h2>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <button class="btn btn-primary float-end"
+                    onclick="location.href='addForm.html'"
+                    th:onclick="|location.href='@{/basic/items/add}'|"
+                    type="button">청원하기</button>
+        </div>
+    </div>
+    <hr class="my-4">
+    <div>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>주제</th>
+                <th>분야</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="infoList : ${infoList}">
+                <td th:text="${infoList.id}">번호</a></td>
+                <td><a href="petition.html" th:text="${infoList.subject}">제목</a></td>
+                <td th:text="${infoList.field}">분류</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div> <!-- /container -->
+</body>
+</html>
