@@ -1,0 +1,105 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <link th:href="@{/css/bootstrap.min.css}"
+          href="../css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .container {
+            max-width: 560px;
+        } </style>
+</head>
+<body>
+<head th:replace="/basic/navVar.html :: nav"></head>
+<div class="container">
+    <div class="py-5 text-center">
+        <h2>지금 청원하기</h2>
+    </div>
+
+    <div>
+        <h5 class="mt-3">
+            청와대 국민청원 게시판 운영 원칙<br><br>
+        </h5>
+        <ul>
+            <li>
+                청와대는 사상과 표현의 다양성을 존중합니다. 동시에 타인의 권리를 침해하거나 명예를 훼손하는 내용은 제한합니다. 방송통신심의위원회의 '정보통신에 관한 심의 규정', 한국인터넷자율정책기구의 '정책규정' 등을 기반으로 문제 게시물은 삭제될 수 있습니다. 자극적이고 혐오스러운 내용, 비속어, 폭력적 내용, 특정 대상을 비하하거나 차별을 조장하는 내용, 개인정보 유출을 비롯해 타인의 권리를 침해하는 내용, 반복되는 내용, 허위사실 등은 삭제나 숨김 처리될 수 있습니다.
+            </li>
+            <li>
+                청원글 게시 후 30일 동안 100명의 사전동의를 받은 청원에 한해 국민청원 게시판에 공개됩니다. 청원이 공개된 날로부터 30일 동안 20만 명 이상의 동의를 받은 청원에 대해 답변합니다.
+            </li>
+            <li>
+                한 번 작성된 청원은 수정 및 삭제가 불가능합니다. 최초 청원 취지와 다른 내용으로 변경되는 것을 방지하여 청원 참여자의 의견을 보호하기 위한 조치이니 신중하게 작성하여 주시기 바랍니다.
+            </li>
+        </ul>
+    </div>
+    <div>
+        <h5 class="mt-3">
+            청원 작성 요령 안내<br><br>
+        </h5>
+        <ul>
+            <li>
+                새 청원글 작성 시, 내용을 대표하는 제목 및 관련 분야를 선택하신 후 내용을 입력해주시면 됩니다.
+            </li>
+            <li>
+                청원 내용과 관련 있는 웹사이트 또는 영상 URL이 있다면 첨부해주시기 바랍니다.
+            </li>
+            <li>
+                청원 내용의 주요 키워드를 태그란에 입력해주시면 다른 참여자들이 여러분들의 청원을 쉽게 찾는 데 도움이 됩니다.
+            </li>
+        </ul>
+    </div>
+    <hr color="black"><br>
+
+    <form action="petition.html" th:action method="post">
+        <div>
+            <label for="subject">청원제목</label>
+            <input type="text" id="subject" name="subject" class="form-control" placeholder="청원제목을 입력해주세요.">
+        </div>
+        <div>
+            <label for="field">카테고리</label>
+            <select id="field" name="field" class="form-control">
+                <option value="" selected>카테고리를 선택해주세요.</option>
+                <option>정치개혁</option>
+                <option>외교/통일/국방</option>
+                <option>일자리</option>
+                <option>미래</option>
+                <option>성장동력</option>
+                <option>농산어촌</option>
+                <option>보건복지</option>
+                <option>육아/교육</option>
+                <option>안전/환경</option>
+                <option>저출산/고령화대책</option>
+                <option>행정</option>
+                <option>반려동물</option>
+                <option>교통/건축/국토</option>
+                <option>경제민주화</option>
+                <option>인권/성평등</option>
+                <option>문화/예술/체육/언론</option>
+                <option>기타</option>
+            </select>
+        </div>
+        <div>
+            <label for="content">청원내용</label>
+            <textarea type="text" id="content" name="content" class="form-control" rows="20" cols="40"></textarea>
+        </div>
+        <hr class="my-4">
+        <div class="row">
+            <div class="col">
+                <button class="w-100 btn btn-primary btn-sm" type="submit" style="background: #002752">작성 완료</button>
+            </div>
+            <div class="col">
+                <button class="w-100 btn btn-secondary btn-sm" onclick="location.href='items.html'"
+                        th:onclick="|location.href='@{/}'|"
+                        type="button">작성 취소
+                </button>
+            </div>
+        </div>
+    </form>
+</div> <!-- /container -->
+<script>
+    $('.editable').each(function(){
+        this.contentEditable = true;
+    });
+</script>
+</body>
+</html>

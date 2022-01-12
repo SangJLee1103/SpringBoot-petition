@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <link th:href="@{/css/bootstrap.min.css}"
+          href="../css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .container {
+            max-width: 560px;
+        } </style>
+</head>
+<body>
+<head th:replace="/basic/navVar.html :: nav"></head>
+<div class="container">
+    <div class="py-5 text-center">
+        <h2>청원내용수정</h2>
+    </div>
+    <form action="petition.html" th:action method="post">
+        <div>
+            <label for="id">번호</label>
+            <input type="text" id="id" name="id" class="form-control" value="1" th:value="${petition.id}" readonly>
+        </div>
+        <div>
+            <label for="subject">제목</label>
+            <input type="text" id="subject" name="subject" class="form-control" value="상품A" th:value="${petition.subject}">
+        </div>
+        <div>
+            <label for="field">카테고리</label>
+            <select id="field" name="field" class="form-control">
+                <option th:text="${petition.field}" selected></option>
+                <option>정치개혁</option>
+                <option>외교/통일/국방</option>
+                <option>일자리</option>
+                <option>미래</option>
+                <option>성장동력</option>
+                <option>농산어촌</option>
+                <option>보건복지</option>
+                <option>육아/교육</option>
+                <option>안전/환경</option>
+                <option>저출산/고령화대책</option>
+                <option>행정</option>
+                <option>반려동물</option>
+                <option>교통/건축/국토</option>
+                <option>경제민주화</option>
+                <option>인권/성평등</option>
+                <option>문화/예술/체육/언론</option>
+                <option>기타</option>
+            </select>
+        </div>
+        <div>
+            <label for="content">청원내용</label>
+            <textarea id="content" name="content" class="form-control" rows="20" cols="40" th:text="${petition.content}"></textarea>
+        </div>
+        <hr class="my-4">
+        <div class="row">
+            <div class="col">
+                <button class="w-100 btn btn-primary btn-sm" type="submit" style="background: #002752">수정하기</button>
+            </div>
+            <div class="col">
+                <button class="w-100 btn btn-secondary btn-sm" onclick="location.href='item.html'"
+                        th:onclick="|location.href='@{/{petitionId}(petitionId=${petition.id})}'|"
+                        type="button">수정 취소</button>
+            </div>
+        </div>
+    </form>
+</div> <!-- /container -->
+</body>
+</html>

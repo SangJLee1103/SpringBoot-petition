@@ -16,7 +16,8 @@
         <div class="col">
             <button class="btn btn-primary float-end"
                     onclick="location.href='addForm.html'"
-                    th:onclick="|location.href='@{/basic/items/add}'|"
+                    style="background: #002752"
+                    th:onclick="|location.href='@{/write}'|"
                     type="button">청원하기</button>
         </div>
     </div>
@@ -25,16 +26,16 @@
         <table class="table">
             <thead>
             <tr>
-                <th>ID</th>
+                <th>번호</th>
                 <th>주제</th>
                 <th>분야</th>
             </tr>
             </thead>
             <tbody>
-            <tr th:each="infoList : ${infoList}">
-                <td th:text="${infoList.id}">번호</a></td>
-                <td><a href="petition.html" th:text="${infoList.subject}">제목</a></td>
-                <td th:text="${infoList.field}">분류</td>
+            <tr th:each="petition : ${petitions}">
+                <td th:text="${petition.id}">번호</td>
+                <td><a href="petition.html" th:href="@{/{petitionId} (petitionId=${petition.id})}" th:text="${petition.subject}">제목</a></td>
+                <td th:text="${petition.field}">분류</td>
             </tr>
             </tbody>
         </table>

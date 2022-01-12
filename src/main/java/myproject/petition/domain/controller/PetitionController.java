@@ -5,14 +5,14 @@ import myproject.petition.domain.info.Info;
 import myproject.petition.domain.info.PetitionRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.annotation.PostConstruct;
 import java.util.List;
 
 @Controller
-@RequestMapping("/president/petition")
+@RequestMapping("")
 @RequiredArgsConstructor
 public class PetitionController {
 
@@ -20,10 +20,45 @@ public class PetitionController {
 
     @GetMapping
     public String main(Model model){
-        List<Info>infoList = petitionRepository.findAll();
-        model.addAttribute("infoList", infoList);
+        List<Info>petitions = petitionRepository.findAll();
+        model.addAttribute("petitions", petitions);
         return "basic/main";
     }
+
+    @GetMapping("/{petitionId}")
+    public String petition(@PathVariable Long petitionId, Model model){
+        Info petition = petitionRepository.findById(petitionId);
+        model.addAttribute("petition", petition);
+        return "/basic/petition";
+    }
+
+    @GetMapping("/write")
+    public String write(){
+        return "/basic/write";
+    }
+
+    @PostMapping("/write")
+    public String writePetition(Info info, RedirectAttributes redirectAttributes){
+        Info savedPetition = petitionRepository.save(info);
+        redirectAttributes.addAttribute("petitionId", savedPetition.getId());
+        redirectAttributes.addAttribute("status", true);
+        return "redirect:/{petitionId}";
+    }
+
+    @GetMapping("/{petitionId}/edit")
+    public String edit(@PathVariable Long petitionId, Model model){
+        Info petition = petitionRepository.findById(petitionId);
+        model.addAttribute("petition", petition);
+        return "/basic/editPetition";
+    }
+
+    @PostMapping("/{petitionId}/edit")
+    public String editPetition(@PathVariable Long petitionId, @ModelAttribute Info info){
+        petitionRepository.updateInfo(petitionId, info);
+        return "redirect:/{petitionId}";
+    }
+
+
 
     /**
      * 테스트용 데이터 추가
@@ -62,5 +97,4 @@ public class PetitionController {
                         "\n" +
                         "[본 게시물의 일부 내용이 국민 청원 요건에 위배되어 관리자에 의해 수정되었습니다]"));
     }
-
 }
