@@ -9,32 +9,31 @@ import java.util.concurrent.ConcurrentHashMap;
 
 @Repository
 public class PetitionRepository {
-    private static final Map<Long, Info> repo = new ConcurrentHashMap<>();
+    private static final Map<Long, Petition> repo = new ConcurrentHashMap<>();
     private static long sequence = 0L;
 
-    public Info save(Info info){
+    public Petition save(Petition info){
         info.setId(++sequence);
         repo.put(info.getId(), info);
         return info;
     }
 
-    public Info findById(Long id){
+    public Petition findById(Long id){
         return repo.get(id);
     }
 
-    public List<Info> findAll(){
+    public List<Petition> findAll(){
         return new ArrayList<>(repo.values());
     }
 
-    public void updateInfo(Long infoId, Info updateParam){
-        Info findInfo = findById(infoId);
-        findInfo.setSubject(updateParam.getSubject());
-        findInfo.setField(updateParam.getField());
-        findInfo.setContent(updateParam.getContent());
+    public void updatePetition(Long petitionId, Petition updateParam){
+        Petition findPetition = findById(petitionId);
+        findPetition.setSubject(updateParam.getSubject());
+        findPetition.setField(updateParam.getField());
+        findPetition.setContent(updateParam.getContent());
     }
 
-    public void deleteInfo(Long infoId, Info deleteParam){
-        Info findInfo = findById(infoId);
-        repo.remove(findInfo);
+    public void deletePetition(Long petitionId, Petition deleteParam){
+        repo.remove(petitionId, deleteParam);
     }
 }
