@@ -36,4 +36,8 @@ public class PetitionRepository {
     public void deletePetition(Long petitionId, Petition deleteParam){
         repo.remove(petitionId, deleteParam);
     }
+
+    public void clearRepo(){
+        repo.clear();
+    }
 }
