@@ -1,11 +1,11 @@
-package myproject.petition.domain.controller;
+package myproject.web.controller;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import myproject.petition.domain.info.Petition;
 import myproject.petition.domain.info.PetitionRepository;
-import myproject.petition.validation.PetitionEditValidation;
-import myproject.petition.validation.PetitionWriteValidation;
+import myproject.web.form.PetitionEditValidation;
+import myproject.web.form.PetitionWriteValidation;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -110,29 +110,7 @@ public class PetitionController {
                 "\n" +
                 "한국은 엄연한 민주주의 국가이며 이러한 민주주의는 노력없이 이루어진 것이 아닌, 결백한 다수의 고통과 희생을 통해 쟁취한 것입니다. 이로부터 고작 약 30년이 지난 지금, 민주화운동의 가치를 훼손하는 드라마의 방영은 당연히 중지되어야 하며 한국문화의 영향력이 점차 커지고 있는 현 시점에서 방송계 역시 역사왜곡의 심각성에 대해 다시 한번 생각해 봤으면 합니다.\n"));
 
-        petitionRepository.save(new Petition("외국 국적 여중생을 묶고 6시간 가학적 집단폭행한 가해자4명 강력처벌.신상공개를촉구합니다.", "인권/성평등",
-                "외국 국적 여중생을 집단 폭행하고 학대한 또래 중학생 4명이 경찰에 붙잡혔다.\n" +
-                        "\n" +
-                        "경남 **경찰서는 1일 중학교 1학년인 외국 국적 A(14)양을 폭행한 중학생 4명 중 2명을 촉법소년으로 소년부에 송치하고 2명은 폭행 혐의를 적용에 검찰에 넘겼다고 밝혔다.\n" +
-                        "\n" +
-                        "이들은 지난 7월 A양의 몸을 묶은 채 속옷 차림으로 폭행한 혐의를 받는다. 본지 취재를 종합하면 A양은 가정 불화로 가출한 뒤 알게 된 가해 학생 중 1명인 B양 집에 머물렀다. 이후 가출한 A양을 찾던 친척이 B양을 때렸고, B양 등 일행 4명은 이에 대한 보복으로 A양을 폭행한 것으로 알려졌다.\n" +
-                        "\n" +
-                        "가해 학생들은 폭행을 하며 A양의 국적을 비하하기도 한 것으로 전해졌다. 경찰 조사 결과 당시 가해 학생과 피해 학생 모두 술에 취한 상태였고, 집단 폭행은 밤 12시부터 6시간 동안 이어진 것으로 전해졌다.\n" +
-                        "\n" +
-                        "경남도교육청과 경찰은 A양의 피해 경위를 정확히 조사하는 한편 A양 친척이 다른 학생에게 상처를 입힌 사실에 대해서도 조사 중이다.\n" +
-                        "\n" +
-                        "경남 **경찰서는 1일 중학교 1학년인 외국 국적 A(14)양을 폭행한 중학생 4명 중 2명을 촉법소년으로 소년부에 송치하고 2명은 폭행 혐의를 적용에 검찰에 넘겼다고 밝혔다.\n" +
-                        "\n" +
-                        "이들은 지난 7월 A양의 몸을 묶은 채 속옷 차림으로 폭행한 혐의를 받는다. 본지 취재를 종합하면 A양은 가정 불화로 가출한 뒤 알게 된 가해 학생 중 1명인 B양 집에 머물렀다. 이후 가출한 A양을 찾던 친척이 B양을 때렸고, B양 등 일행 4명은 이에 대한 보복으로 A양을 폭행한 것으로 알려졌다.\n" +
-                        "\n" +
-                        "가해 학생들은 폭행을 하며 A양의 국적을 비하하기도 한 것으로 전해졌다. 경찰 조사 결과 당시 가해 학생과 피해 학생 모두 술에 취한 상태였고, 집단 폭행은 밤 12시부터 6시간 동안 이어진 것으로 전해졌다.\n" +
-                        "\n" +
-                        "경남도교육청과 경찰은 A양의 피해 경위를 정확히 조사하는 한편 A양 친척이 다른 학생에게 상처를 입힌 사실에 대해서도 조사 중이다.\n" +
-                        "\n" +
-                        "가해 학생과 피해 학생 모두 술에 취한 상태였고, 집단 폭행은 밤 12시부터 새벽까지 6시간 동안 이어진 것으로 조사됐다.\n" +
-                        "\n" +
-                        "강력수사 후 이 가해자 4명을 강력 처벌과 신상 공개를 요청합니다 만약 안 될 시 이 가해자들 부모를 강력 처벌을 요청합니다\n" +
-                        "\n" +
-                        "[본 게시물의 일부 내용이 국민 청원 요건에 위배되어 관리자에 의해 수정되었습니다]"));
+        petitionRepository.save(new Petition("미접종자 거부와 차별을 멈추게 해주세요.", "보건복지",
+                "백신 그만 맞고 싶다"));
     }
 }

@@ -1,7 +1,6 @@
-package myproject.petition.validation;
+package myproject.web.form;
 
 import lombok.Data;
-import org.hibernate.validator.constraints.Range;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
