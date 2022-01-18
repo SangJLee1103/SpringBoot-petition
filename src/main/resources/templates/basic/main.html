@@ -9,7 +9,7 @@
 <head th:replace="/basic/navVar.html :: nav"></head>
 <div class="container" style="max-width: 600px">
     <div class="py-5 text-center">
-        <h2>국민 청원</h2>
+        <h2 th:text="#{page.main}">국민 청원</h2>
     </div>
 
     <div class="row">
@@ -18,7 +18,7 @@
                     onclick="location.href='addForm.html'"
                     style="background: #002752"
                     th:onclick="|location.href='@{/write}'|"
-                    type="button">청원하기</button>
+                    type="button" th:text="#{button.main}">청원하기</button>
         </div>
     </div>
     <hr class="my-4">
@@ -26,9 +26,9 @@
         <table class="table">
             <thead>
             <tr>
-                <th>번호</th>
-                <th>주제</th>
-                <th>분야</th>
+                <th th:text="#{label.main.id}">번호</th>
+                <th th:text="#{label.main.subject}">주제</th>
+                <th th:text="#{label.main.field}">분야</th>
             </tr>
             </thead>
             <tbody>

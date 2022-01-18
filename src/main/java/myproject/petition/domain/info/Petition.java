@@ -4,6 +4,8 @@ import lombok.Data;
 
 @Data
 public class Petition {
+
+
     private Long id;
     private String subject;
     private String field;

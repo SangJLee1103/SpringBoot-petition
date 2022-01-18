@@ -1,16 +1,22 @@
 package myproject.petition.domain.controller;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import myproject.petition.domain.info.Petition;
 import myproject.petition.domain.info.PetitionRepository;
+import myproject.petition.validation.PetitionEditValidation;
+import myproject.petition.validation.PetitionWriteValidation;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.annotation.PostConstruct;
 import java.util.List;
 
+@Slf4j
 @Controller
 @RequestMapping("")
 @RequiredArgsConstructor
@@ -39,8 +45,22 @@ public class PetitionController {
     }
 
     @PostMapping("/write")
-    public String writePetition(Petition info, RedirectAttributes redirectAttributes){
-        Petition savedPetition = petitionRepository.save(info);
+    public String writePetition(@Validated @ModelAttribute("petition") PetitionWriteValidation form, BindingResult bindingResult, RedirectAttributes redirectAttributes){
+
+        //검증에 실패하면 다시 입력 폼으로
+        //bindingResult 는 modelAttribute 에 담지 않아도 뷰로 넘어감!
+        if(bindingResult.hasErrors()){
+            log.info("error={}", bindingResult);
+            return "basic/write";
+        }
+
+        Petition petition = new Petition();
+        petition.setSubject(form.getSubject());
+        petition.setField(form.getField());
+        petition.setContent(form.getContent());
+
+
+        Petition savedPetition = petitionRepository.save(petition);
         redirectAttributes.addAttribute("petitionId", savedPetition.getId());
         redirectAttributes.addAttribute("status", true);
         return "redirect:/{petitionId}";

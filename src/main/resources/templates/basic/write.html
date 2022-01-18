@@ -7,13 +7,18 @@
     <style>
         .container {
             max-width: 560px;
-        } </style>
+        }
+        .field-error {
+            border-color: #dc3545;
+            color: #dc3545;
+        }
+    </style>
 </head>
 <body>
 <head th:replace="/basic/navVar.html :: nav"></head>
 <div class="container">
     <div class="py-5 text-center">
-        <h2>지금 청원하기</h2>
+        <h2 th:text="#{page.write}">지금 청원하기</h2>
     </div>
 
     <div>
@@ -52,12 +57,16 @@
 
     <form action="petition.html" th:action th:object="${petition}" method="post">
         <div>
-            <label for="subject">청원제목</label>
-            <input type="text" id="subject" th:field="*{subject}" class="form-control" placeholder="청원제목을 입력해주세요.">
+            <label for="subject" th:text="#{label.write.subject}">청원제목</label>
+            <input type="text" id="subject" th:field="*{subject}"
+                   th:errorclass="field-error" class="form-control" placeholder="청원제목을 입력해주세요.">
+        </div>
+        <div class="field-error" th:errors="*{subject}">
+            청원제목 오류
         </div>
         <div>
-            <label for="field">카테고리</label>
-            <select id="field" name="field" class="form-control">
+            <label for="field" th:text="#{label.write.category}">카테고리</label>
+            <select id="field" name="field" th:errorclass="field-error" class="form-control">
                 <option value="" selected>카테고리를 선택해주세요.</option>
                 <option>정치개혁</option>
                 <option>외교/통일/국방</option>
@@ -78,9 +87,16 @@
                 <option>기타</option>
             </select>
         </div>
+        <div class="field-error" th:errors="*{field}">
+            청원분야 오류
+        </div>
         <div>
-            <label for="content">청원내용</label>
-            <textarea type="text" id="content" th:field="*{content}" class="form-control" rows="20" cols="40"></textarea>
+            <label for="content" th:text="#{label.write.content}">청원내용</label>
+            <textarea type="text" id="content" th:field="*{content}"
+                      th:errorclass="field-error" class="form-control" rows="20" cols="40"></textarea>
+        </div>
+        <div class="field-error" th:errors="*{content}">
+            청원내용 오류
         </div>
         <hr class="my-4">
         <div class="row">
