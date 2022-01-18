@@ -7,27 +7,37 @@
     <style>
         .container {
             max-width: 560px;
-        } </style>
+        }
+        .field-error {
+            border-color: #dc3545;
+            color: #dc3545;
+        }
+    </style>
 </head>
 <body>
 <head th:replace="/basic/navVar.html :: nav"></head>
 <div class="container">
     <div class="py-5 text-center">
-        <h2>청원내용수정</h2>
+        <h2 th:text="#{page.update}">청원내용수정</h2>
     </div>
     <form action="petition.html" th:action th:object="${petition}" method="post">
         <div>
-            <label for="id">번호</label>
+            <label for="id" th:text="#{label.petition.id}">번호</label>
             <input type="text" id="id" th:field="*{id}" class="form-control" readonly>
         </div>
         <div>
-            <label for="subject">제목</label>
-            <input type="text" id="subject" th:field="*{subject}" class="form-control">
+            <label for="subject" th:text="#{label.petition.subject}">제목</label>
+            <input type="text" id="subject" th:field="*{subject}"
+                   th:errorclass="field-error" class="form-control">
+        </div>
+        <div class="field-error" th:errors="*{subject}">
+            제목 오류
         </div>
         <div>
-            <label for="field">카테고리</label>
-            <select id="field" name="field" class="form-control">
-                <option th:value="${petition.field}" selected></option>
+            <label for="field" th:text="#{label.petition.field}">카테고리</label>
+            <select id="field" name="field"
+                    th:errorclass="field-error" class="form-control">
+                <option selected th:value="${petition.field}" th:text="${petition.field}"></option>
                 <option>정치개혁</option>
                 <option>외교/통일/국방</option>
                 <option>일자리</option>
@@ -47,9 +57,16 @@
                 <option>기타</option>
             </select>
         </div>
+        <div class="field-error" th:errors="*{field}">
+            분야 오류
+        </div>
         <div>
-            <label for="content">청원내용</label>
-            <textarea id="content" th:field="*{content}" class="form-control" rows="20" cols="40"></textarea>
+            <label for="content" th:text="#{label.petition.content}">청원내용</label>
+            <textarea id="content" th:field="*{content}"
+                      th:errorclass="field-error" class="form-control" rows="20" cols="40"></textarea>
+        </div>
+        <div class="field-error" th:errors="*{content}">
+            내용 오류
         </div>
         <hr class="my-4">
         <div class="row">

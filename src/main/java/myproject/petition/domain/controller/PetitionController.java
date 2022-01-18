@@ -74,8 +74,20 @@ public class PetitionController {
     }
 
     @PostMapping("/{petitionId}/edit")
-    public String editPetition(@PathVariable Long petitionId, @ModelAttribute Petition petition){
-        petitionRepository.updatePetition(petitionId, petition);
+    public String editPetition(@PathVariable Long petitionId, @Validated @ModelAttribute("petition") PetitionEditValidation form, BindingResult bindingResult){
+
+        if(bindingResult.hasErrors()){
+            log.info("errors={}", bindingResult);
+            return "/basic/editPetition";
+        }
+
+        Petition petitionParam = new Petition();
+        petitionParam.setSubject(form.getSubject());
+        petitionParam.setField(form.getField());
+        petitionParam.setContent(form.getContent());
+
+
+        petitionRepository.updatePetition(petitionId, petitionParam);
         return "redirect:/{petitionId}";
     }
 
