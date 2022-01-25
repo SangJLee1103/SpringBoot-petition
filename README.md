@@ -29,8 +29,16 @@ Repository, 서비스 로직에 대한 코드가 들어있고, web패키지에�
 로그인 회원가입을 위한 Spring interceptor 코드, Form 데이터 누락을 막아주는 Validation 코드 등이 있습니다.</br>
 추가적으로 view와 관련된 코드는 resources 패키지에 있습니다.</br>
 
+
 ### 5. Usage
 
 실행 영상
 
 https://hnet.com/video-to-gif/viewimage/20220124-16-UUNwRkmyvnSQ2TWB-soKdAO-HNET
+
+
+### 6. Things to improve
+
+1. 로그인 시 네비게이션 바 디자인
+2. 청원자 수 카운트 기능
+3. RDBMS 적용
