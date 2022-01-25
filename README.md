@@ -24,9 +24,10 @@ FrameWork: Spring Boot(version 2.5.8)</br>
 ### 4. Files 
 
 petition 패키지 하위 패키지로 domain과 web 패키지가 중요하다고 생각하여 간단히 소개하겠습니다.</br>
-domain패키지에는 DB에서의 엔티티 저장되어야 하는 데이터, 예를 들어 회원 클래스(이름, 아이디, 비밀번호), 청원 클래스(청원 제목, 분야)등의 데이터와</br>
-Repository, 서비스 로직에 대한 코드가 들어있고, web패키지에는 URL 매핑정보 및 기능과 관련된 컨트롤러,<br>
-로그인 회원가입을 위한 Spring interceptor 코드, Form 데이터 누락을 막아주는 Validation 코드 등이 있습니다.</br>
+domain패키지에는 DB에서의 엔티티 저장되어야 하는 데이터, 예를 들어 회원 클래스(이름, 아이디, 비밀번호),</br> 
+청원 클래스(청원 제목, 분야)등의 데이터와 Repository, 서비스 로직에 대한 코드가 들어있고, </br> 
+web패키지에는 URL 매핑정보 및 기능과 관련된 컨트롤러, 로그인 회원가입을 위한 Spring interceptor 코드,</br>
+Form 데이터 누락을 막아주는 Validation 코드 등이 있습니다.</br>
 추가적으로 view와 관련된 코드는 resources 패키지에 있습니다.</br>
 
 
