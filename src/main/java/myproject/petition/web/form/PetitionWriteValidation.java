@@ -1,4 +1,4 @@
-package myproject.web.form;
+package myproject.petition.web.form;
 
 import lombok.Data;
 

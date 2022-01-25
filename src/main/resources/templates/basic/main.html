@@ -10,7 +10,7 @@
     </style>
 </head>
 <body>
-<head th:replace="/basic/navVar.html :: nav"></head>
+<head th:replace="/layout/navVar.html :: nav"></head>
 <div class="container" style="max-width: 600px">
     <div class="py-5 text-center">
         <h2 th:text="#{page.main}">국민 청원</h2>
@@ -39,11 +39,6 @@
                 <td th:text="${petition.id}">번호</td>
                 <td><a href="petition.html" th:href="@{/{petitionId} (petitionId=${petition.id})}" th:text="${petition.subject}">제목</a></td>
                 <td th:text="${petition.field}">분류</td>
-                <td><button class="btn btn-primary"
-                            onclick="location.href='addForm.html'"
-                            style="background: #002752"
-                            th:onclick="|location.href='@{/{petitionId}/delete(petitionId=${petition.id})}'|"
-                            type="button">삭제</button></td>
             </tr>
             </tbody>
         </table>

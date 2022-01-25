@@ -1,11 +1,12 @@
-package myproject.web.controller;
+package myproject.petition.web.controller;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import myproject.petition.domain.info.Petition;
 import myproject.petition.domain.info.PetitionRepository;
-import myproject.web.form.PetitionEditValidation;
-import myproject.web.form.PetitionWriteValidation;
+import myproject.petition.domain.member.Member;
+import myproject.petition.web.form.PetitionEditValidation;
+import myproject.petition.web.form.PetitionWriteValidation;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -18,13 +19,12 @@ import java.util.List;
 
 @Slf4j
 @Controller
-@RequestMapping("")
 @RequiredArgsConstructor
 public class PetitionController {
 
     private final PetitionRepository petitionRepository;
 
-    @GetMapping
+    @GetMapping("")
     public String main(Model model){
         List<Petition>petitions = petitionRepository.findAll();
         model.addAttribute("petitions", petitions);
@@ -91,12 +91,11 @@ public class PetitionController {
         return "redirect:/{petitionId}";
     }
 
-    @GetMapping ("/{petitionId}/delete")
-    public String deletePetition(@PathVariable Long petitionId, @ModelAttribute Petition petition){
-        petitionRepository.deletePetition(petitionId, petition);
-        return "/basic/main";
-    }
-
+//    @GetMapping ("/{petitionId}/delete")
+//    public String deletePetition(@PathVariable Long petitionId, @ModelAttribute Petition petition){
+//        petitionRepository.deletePetition(petitionId, petition);
+//        return "/basic/main";
+//    }
 
     /**
      * 테스트용 데이터 추가

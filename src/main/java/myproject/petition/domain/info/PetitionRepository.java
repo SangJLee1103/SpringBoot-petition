@@ -33,9 +33,9 @@ public class PetitionRepository {
         findPetition.setContent(updateParam.getContent());
     }
 
-    public void deletePetition(Long petitionId, Petition deleteParam){
-        repo.remove(petitionId, deleteParam);
-    }
+//    public void deletePetition(Long petitionId, Petition deleteParam){
+//        repo.remove(petitionId, deleteParam);
+//    }
 
     public void clearRepo(){
         repo.clear();
