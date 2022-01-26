@@ -43,3 +43,4 @@ https://hnet.com/video-to-gif/viewimage/20220124-16-UUNwRkmyvnSQ2TWB-soKdAO-HNET
 1. 로그인 시 네비게이션 바 디자인
 2. 청원자 수 카운트 기능
 3. RDBMS 적용
+4. Error Page
